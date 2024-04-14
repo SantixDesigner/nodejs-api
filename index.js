@@ -5,15 +5,12 @@ import { BoomErrorHandler, errorHandler, logErrors } from './middlewares/error.h
 export const app = express()
 
 
-const port = 4000
+const port = 3000
 app.use(express.json())
 app.use(cors())
 app.get('/', (req,res) => {
     res.send('Hola!!!!!!!!')
 })
-
-
-
 
 routerApi(app)
 app.use(logErrors)
