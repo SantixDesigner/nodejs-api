@@ -1,9 +1,9 @@
-export function logErrors(err, req, res, next) {
+ function logErrors(err, req, res, next) {
   console.error(err);
   next(err);
 }
 
-export function errorHandler(err, req, res, next) {
+ function errorHandler(err, req, res, next) {
   console.log('errorHandler');
   res.status(500).json({
     message: err.message,
@@ -11,7 +11,7 @@ export function errorHandler(err, req, res, next) {
   });
 }
 
-export function BoomErrorHandler(err, req, res, next) {
+ function BoomErrorHandler(err, req, res, next) {
   console.log('errorHandler');
   if (err.isBoom) {
     const { output } = err;
@@ -20,4 +20,10 @@ export function BoomErrorHandler(err, req, res, next) {
   else {
     next(err);
   }
+}
+
+module.exports = {
+  logErrors,
+  errorHandler,
+  BoomErrorHandler
 }

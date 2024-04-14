@@ -1,5 +1,5 @@
-import faker from "faker";
-import Boom from "@hapi/boom";
+const faker = require("faker");
+const Boom = require("@hapi/boom");
 class ProductService {
   async create(data) {
     const newProduct = {
@@ -10,18 +10,14 @@ class ProductService {
     return newProduct
   }
   async find() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(this.products)
-      }, 5000)
-    })
+    return this.products
   }
   async findOne(id) {
     const product = this.products.find(item => item.id == id)
-    if (!product){
+    if (!product) {
       throw Boom.notFound('Product not found')
     }
-    if(product.isBlock){
+    if (product.isBlock) {
       throw Boom.conflict('Product is block')
     }
     return product
@@ -69,4 +65,4 @@ class ProductService {
   }
 }
 
-export default ProductService
+module.exports = ProductService

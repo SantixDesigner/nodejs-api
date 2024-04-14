@@ -1,9 +1,9 @@
 
-import e from "express";
-import { validatorHandler } from "../middlewares/validator.handler.js";
-import { createProductSchema, updateProductSchema, getProductSchema } from "../schemas/product.schema.js";
-import ProductService from '../services/product.services.js';
-export const routerProducts = e.Router()
+const e = require("express");
+const { validatorHandler } = require("../middlewares/validator.handler.js");
+const { createProductSchema, updateProductSchema, getProductSchema } = require("../schemas/product.schema.js");
+const ProductService = require('../services/product.services.js');
+const routerProducts = e.Router()
 const service = new ProductService()
 routerProducts.get('/products', async (req, res) => {
   const products = await service.find()
@@ -49,3 +49,5 @@ routerProducts.delete('/products/:id', async (req, res) => {
   const product = await service.delete(id)
   res.json(product)
 })
+
+module.exports = routerProducts

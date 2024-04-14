@@ -1,6 +1,6 @@
-import express from 'express'
+const express = require('express')
 
-export const routerUsers = express.Router()
+const routerUsers = express.Router()
 
 routerUsers.get('/users', (req, res) => {
   const { limit, offset } = req.query
@@ -14,3 +14,5 @@ routerUsers.get('/users', (req, res) => {
     res.send("No hay parametros")
   }
 })
+
+module.exports = routerUsers

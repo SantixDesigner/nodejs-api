@@ -1,8 +1,8 @@
-import express from 'express'
-import cors from 'cors'
-import { routerApi } from './routes/index.js'
-import { BoomErrorHandler, errorHandler, logErrors } from './middlewares/error.handler.js'
-export const app = express()
+const express = require('express')
+const cors = require('cors')
+const routerApi = require( './routes/index.js')
+const { BoomErrorHandler, errorHandler, logErrors } = require( './middlewares/error.handler.js')
+const app = express()
 
 
 const port = process.env.PORT || 3000
